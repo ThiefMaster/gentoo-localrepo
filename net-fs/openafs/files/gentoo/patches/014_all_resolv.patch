@@ -1,0 +1,25 @@
+#link shared libs against -lresolv since we use those functions
+#
+#http://bugs.gentoo.org/305823
+#
+#original patch by Andrej Filipcic
+#ported to openafs-1.6
+#
+#Updated to support BSD by "Naohiro Aota <naota@gentoo.org>" Bug #425352
+diff --git a/src/cf/osconf.m4 b/src/cf/osconf.m4
+index 0fb2e4c..31bfec3 100644
+--- a/src/cf/osconf.m4
++++ b/src/cf/osconf.m4
+@@ -739,6 +739,12 @@ if test "x$enable_optimize_kernel" = "x" ; then
+     [enable_optimize_kernel=yes])
+ fi
+ 
++case $AFS_SYSNAME in
++	*linux*)
++		MT_LIBS="${MT_LIBS} -lresolv"
++		;;
++esac
++
+ #
+ # Special build targets
+ #

@@ -1,0 +1,21 @@
+commit 243186f42cc84af2ff90f6710c6e76b1a4121064
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Sat Jan 5 10:15:03 2019 +0300
+
+    Filter out -lnsl reported by perl.
+    
+    libnsl it is neither needed nor provided.
+
+diff --git a/src/libuafs/Makefile.common.in b/src/libuafs/Makefile.common.in
+index daf09494c..c0556ae4a 100644
+--- a/src/libuafs/Makefile.common.in
++++ b/src/libuafs/Makefile.common.in
+@@ -142,7 +142,7 @@ RX	=../rx
+ AFSINT=../afsint
+ LIB	=../lib
+ SWIG_PERL_CFLAGS = -fPIC `perl -MExtUtils::Embed -e ccopts`
+-SWIG_PERL_LDFLAGS = -fPIC `perl -MExtUtils::Embed -e ldopts`
++SWIG_PERL_LDFLAGS = -fPIC `perl -MExtUtils::Embed -e ldopts | sed "s/-lnsl //g"`
+ SWIG = @SWIG@
+ LIBUAFS_BUILD_PERL = @LIBUAFS_BUILD_PERL@
+ 

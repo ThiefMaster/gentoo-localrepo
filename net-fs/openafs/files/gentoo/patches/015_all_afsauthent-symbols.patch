@@ -1,0 +1,12 @@
+diff --git a/src/util/liboafs_util.la.sym b/src/util/liboafs_util.la.sym
+index 07a280def..434ed9413 100644
+--- a/src/util/liboafs_util.la.sym
++++ b/src/util/liboafs_util.la.sym
+@@ -8,6 +8,7 @@ LogCommandLine
+ LogDesWarning
+ LogLevel
+ LogThreadNum
++ka_GetAFSTicket
+ OpenLog
+ ReOpenLog
+ SetLogThreadNumProgram
